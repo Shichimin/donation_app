@@ -3,16 +3,17 @@ class DonationsController < ApplicationController
   end
 
   def new
-    @donation = User.new
+    @donation = UserDonation.new
   end
 
   def create
-    @donation = User.create(donation_params)
+    @donation = UserDnation.new(donation_params)
+    @donation.save
   end
 
   private
 
   def donation_params
-    params.require(:user).permit(:name, :name_reading, :nickname)
+    params.require(:user).permit(:name, :name_reading, :nickname, :prefecture, :city, :house_number, :building_name, :price)
   end
 end
